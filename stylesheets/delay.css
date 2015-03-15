@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.delay100 {
+    -webkit-animation-delay: 100ms; /* Chrome, Safari, Opera */
+    animation-delay: 100ms;
+}
+.delay200 {
+    -webkit-animation-delay: 200ms; /* Chrome, Safari, Opera */
+    animation-delay: 200ms;
+}
+.delay300 {
+    -webkit-animation-delay: 300ms; /* Chrome, Safari, Opera */
+    animation-delay: 300ms;
+}
+.delay400 {
+    -webkit-animation-delay: 400ms; /* Chrome, Safari, Opera */
+    animation-delay: 400ms;
+}
+.delay500 {
+    -webkit-animation-delay: 500ms; /* Chrome, Safari, Opera */
+    animation-delay: 500ms;
+}
+.delay600 {
+    -webkit-animation-delay: 600ms; /* Chrome, Safari, Opera */
+    animation-delay: 600ms;
+}
+.delay700 {
+    -webkit-animation-delay: 700ms; /* Chrome, Safari, Opera */
+    animation-delay: 700ms;
+}
+.delay800 {
+    -webkit-animation-delay: 800ms; /* Chrome, Safari, Opera */
+    animation-delay: 800ms;
+}
+.delay900 {
+    -webkit-animation-delay: 900ms; /* Chrome, Safari, Opera */
+    animation-delay: 900ms;
+}
+.delay1000 {
+    -webkit-animation-delay: 1000ms; /* Chrome, Safari, Opera */
+    animation-delay: 1000ms;
+}
