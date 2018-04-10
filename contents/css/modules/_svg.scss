@@ -1,0 +1,155 @@
+// main: ../main.scss
+.svg-container{
+  position:relative;
+  svg{
+    transform: scale(2);
+    //transform-origin: 50% 100% 0px;
+    transform-origin:0  0;
+    &+svg{
+      opacity: 0.08;
+      transform: scale(2) matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 57, 0, 1);
+
+      transform-origin:0 75%  0;
+      &.animating g{
+        path{
+          //animation
+          animation-name: dash2;
+          stroke-dasharray:32!important;
+        }
+      }
+    }
+
+  }
+
+  &.standard path{
+    animation-timing-function: bezier(1);
+  }
+  &.deceleration path{
+    animation-timing-function: bezier(2);
+  }
+  &.acceleration path{
+    animation-timing-function: bezier(3);
+  }
+  &.sharp path{
+    animation-timing-function: bezier(4);
+  }
+  &.swift path{
+    animation-timing-function: bezier(5);
+  }
+  &.ease path{
+    animation-timing-function: bezier(0);
+  }
+  path{
+    fill:none;
+    stroke:#FFFFFF;
+    stroke-width:1;
+    stroke-linecap:round;
+    stroke-linejoin:miter;
+    stroke-miterlimit:4;
+    stroke-opacity:1;
+    stroke-dasharray:  100%;
+    stroke-dashoffset: 100%;
+  }
+  &.animating g{
+    path{
+      //animation
+      animation-name: dash;
+      animation-duration:10s;
+      animation-iteration-count:1;
+      animation-fill-mode: both;
+    }
+  }
+  //a
+  /*  #letter-a{
+  .main{
+  animation-delay:250ms;
+}
+.second{
+animation-delay:0ms;
+}
+}
+//n
+#letter-n{
+
+.main{
+animation-delay:0ms;
+}
+.second{
+animation-delay:0ms;
+}
+}
+//d
+#letter-d{
+
+.main{
+animation-delay:0ms;
+}
+.second{
+animation-delay:0ms;
+}
+}
+//e
+#letter-e{
+
+.main{
+animation-delay:0ms;
+}
+.second{
+animation-delay:0ms;
+}
+}
+//m
+#letter-m{
+
+.main{
+animation-delay:0ms;
+}
+.second{
+animation-delay:0ms;
+}
+}
+//x
+#letter-x{
+
+.main{
+animation-delay:0ms;
+}
+.second{
+animation-delay:0ms;
+}
+}*/
+
+
+$count:10;
+$delay:150ms;
+@for $i from 1 through $count {
+  &:nth-child(#{$i}) path {
+    &.main{
+      animation-delay:#{$i*$delay};
+    }
+    &.second{
+      animation-delay:#{$i*$delay+$delay};
+    }
+  }
+}
+
+
+
+}
+@keyframes dash {
+  from{
+    stroke-dashoffset: 100%;
+  }
+  to {
+    stroke-dashoffset: 0%;
+  }
+}
+
+@keyframes dash2 {
+  from{
+    stroke-dashoffset: 100%;
+  }
+  to {
+    stroke-dashoffset: 0%;
+  }
+}
