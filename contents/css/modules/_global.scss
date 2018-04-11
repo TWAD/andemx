@@ -10,11 +10,15 @@ html,body{
   font-weight:300;
   font-family: 'Comfortaa', cursive;
 }
-
-.container{
+.app{
   position:relative;
   height:100%;
-  background-image: radial-gradient(circle at right, $light 0, hsl(213, 100%, 25%) 100%);
+  &__container{
+    position:relative;
+    height:100%;
+    background-image: radial-gradient(circle at right, $light 0, hsl(213, 100%, 25%) 100%);
+  }
+
 }
 
 .title{
@@ -30,7 +34,7 @@ html,body{
     //position:absolute;
     //right:0;
     display:inline-block;
-      font-size:128px;
-      color:$light;
+    font-size:128px;
+    color:$light;
   }
 }

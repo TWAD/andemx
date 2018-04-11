@@ -11,7 +11,9 @@
     @return cubic-bezier(0.4, 0.0, 0.6, 1);
   } @else if ($curve == 5 or $curve == swift) {
     @return cubic-bezier(0.55, 0, 0.1, 1);
-  } @else {
+  } @else if ($curve == 6 or $curve == ease-in-out) {
+    @return ease-in-out;
+  }@else {
     @return ease;
   }
 }
