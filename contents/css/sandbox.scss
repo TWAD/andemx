@@ -1,0 +1,7 @@
+$list-letter: 'a' 'n' 'd' 'e' 'm' 'x';
+$list-offset: 97 95 109 94 163 19;
+@for $i from 1 through length($list-letter){
+  .test-#{nth($list-letter, $i)} {
+    border:nth($list-offset, $i);
+  }
+}

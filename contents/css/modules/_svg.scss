@@ -1,384 +1,400 @@
 // main: ../main.scss
 $animation-duration:1000;
+$list-letter: 'a' 'n' 'd' 'e' 'dot' 'm' 'x';
+$list-offset: 97 95 109 94 94 163 19;
+
+$logo-shape:hsla(242,34%,55%,1);
+$logo-shadow:hsla(243,39%,45%,0.4);
 
 .logo{
-  &--standard path{
-    animation-timing-function: bezier(1);
-  }
-  &--deceleration path{
-    animation-timing-function: bezier(2);
-  }
-  &--acceleration path{
-    animation-timing-function: bezier(3);
-  }
-  &--sharp path{
-    animation-timing-function: bezier(4);
-  }
-  &--swift path{
-    animation-timing-function: bezier(5);
-  }
-  &--ease path{
-    animation-timing-function: bezier(0);
-  }
-  &--ease-in-out path{
-    animation-timing-function: bezier(6);
-  }
-  &--animating {
-    .logo__letter{
-      &--a path{
-        stroke-dasharray: 97.00;
-        animation-name: dash-a, bounce;
-      }
-      &--n path{
-        stroke-dasharray: 95.00;
-        animation-name: dash-n, bounce;
-      }
-      &--d path{
-        stroke-dasharray: 109.00;
-        animation-name: dash-d, bounce;
-      }
-      &--e path{
-        stroke-dasharray: 94.00;
-        animation-name: dash-e, bounce;
-      }
-      &--dot path{
-        stroke-dasharray: 94.00;
-        animation-name: dash-dot, bounce;
-      }
-      &--m path{
-        stroke-dasharray: 163.00;
-        animation-name: dash-m, bounce;
-      }
-      &--x path{
-        stroke-dasharray: 19.00;
-        animation-name: dash-x, bounce;
-      }
-    }
+	&--standard path{
+		animation-timing-function: bezier(1);
+	}
+	&--deceleration path{
+		animation-timing-function: bezier(2);
+	}
+	&--acceleration path{
+		animation-timing-function: bezier(3);
+	}
+	&--sharp path{
+		animation-timing-function: bezier(4);
+	}
+	&--swift path{
+		animation-timing-function: bezier(5);
+	}
+	&--ease path{
+		animation-timing-function: bezier(0);
+	}
+	&--ease-in-out path{
+		animation-timing-function: bezier(6);
+	}
+	&--animating {
+		.logo__letter{
+			@for $i from 1 through length($list-letter){
+				$current-letter:nth($list-letter, $i);
+				&--#{nth($list-letter, $i)} path{
+					stroke-dasharray: nth($list-offset, $i);
+					animation-name: logo-offset-#{$current-letter};
+				}
+			}
+		}
 
+		.logo__svg{
+			padding:64px 115px;
+			//transform-origin:0  0;
+			transform:scale(1.2);
+			transition:filter 5s bezier(swift);
+			filter:drop-shadow(0 -1pt 0pt white);
+			//  &--ready{
+		}
+	}
+	&--lighting {
+		.logo__svg{
 
-    .logo__svg{
-      padding:16px;
-      transform-origin:0  0;
-      &--reflect{
-        opacity: 0.08;
-        transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 57, 0, 1);
-      }
+			//margin-top:-4pt;
+			filter:
+			drop-shadow(0 -1pt 0pt white)
+			drop-shadow(0 0.25pt 0pt $logo-shape)
+			drop-shadow(0 0.5pt 0pt $logo-shape)
+			drop-shadow(0 0.75pt 0pt $logo-shape)
+			drop-shadow(0 1pt 0pt $logo-shape)
+			drop-shadow(0 1pt 0pt $logo-shape)
+			//
+			drop-shadow(0 0pt 0pt darken($logo-shadow,100%))
+			//drop-shadow(0 0pt 1pt darken($logo-shadow,100%))
+			//logo-shape
+			drop-shadow(0 1pt 1pt $logo-shadow)
+			drop-shadow(0 1pt 1pt $logo-shadow)
+			drop-shadow(0 1pt 1pt $logo-shadow)
+			drop-shadow(0 2pt 2pt $logo-shadow)
+			drop-shadow(0 3pt 3pt $logo-shadow)
+			drop-shadow(0 4pt 4pt $logo-shadow)
+			drop-shadow(0 5pt 5pt $logo-shadow)
+			;
+		}
+	}
+	&__letter{
+		path{
+			fill:none;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			stroke-miterlimit:4;
+			stroke-opacity:1;
+			stroke-width:3pt;
+			stroke:hsla(0,0%,93%,1)!important;
 
-      &--reflect{
-        .logo__letter{
-          &--a path{
-            animation-name: reflect-dash-a!important;          }
-          &--n path{
-            animation-name: reflect-dash-n!important;
-          }
-          &--d path{
-            animation-name: reflect-dash-d!important;
-          }
-          &--e path{
-            animation-name: reflect-dash-e!important;
-          }
-          &--dot path{
-            animation-name: reflect-dash-dot!important;
-          }
-          &--m path{
-            animation-name: reflect-dash-m!important;
-          }
-          &--x path{
-            animation-name: reflect-dash-x!important;
-          }
-        }
-      }
-    }
-  }
+			animation-duration:$animation-duration+ms;
+			animation-iteration-count:1;
+			animation-fill-mode: both;
+		}
+		//animation-delay
+		$count:10;
+		$delay:$animation-duration/$phi/$phi;
+		@for $i from 1 through $count {
+			&:nth-child(#{$i}) path {
+				animation-delay:#{(($i)-1)*$delay}ms;
+			}
+		}
+	}
 
-
-
-
-  &__box{
-    display:none;
-  }
-  &__letter{
-    path{
-      fill:none;
-      stroke:#FFFFFF;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-      stroke-miterlimit:4;
-      stroke-opacity:1;
-      animation-duration:$animation-duration+ms, 4s;
-      animation-iteration-count:1;
-      animation-fill-mode: both;
-    }
-    //animation-delay
-    $count:10;
-    $delay:$animation-duration/$phi/$phi;
-    @for $i from 1 through $count {
-      &:nth-child(#{$i}) path {
-        animation-delay:#{(($i)-1)*$delay}ms, 3500ms;
-      }
-    }
-  }
+	&__box{
+		display:none;
+	}
 }
 
 /*--------------keyframes----------------------*/
+@for $i from 1 through length($list-letter){
+	@keyframes logo-offset-#{nth($list-letter, $i)} {
+		0%{
+			stroke-opacity:0;
+			stroke-dashoffset: nth($list-offset, $i);
+
+		}
+		50% {
+			stroke-opacity:1;
+			stroke-dashoffset: 0;
+
+		}
+		100% {
+			stroke-opacity:1;
+			stroke-dashoffset: 0;
+
+		}
+	}
+}
+/*
 @keyframes dash-a {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 97;
-    stroke-width:2;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:2;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:4;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 97;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
 }
 
 @keyframes dash-n {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 95;
-    stroke-width:2;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:2;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:4;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 95;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
 }
 
 @keyframes dash-d {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset:109;
-    stroke-width:2;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:2;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:4;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset:109;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
 }
 
 @keyframes dash-e {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 94;
-    stroke-width:2;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:2;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:4;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 94;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
 }
 
 @keyframes stroke-dot {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 163;
-    stroke-width:2;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:2;
-  }
-  100% {
-    stroke-opacity:0;
-    stroke-dashoffset: 0;
-    stroke-width:4;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 163;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+}
+100% {
+stroke-opacity:0;
+stroke-dashoffset: 0;
+}
 }
 
 @keyframes dash-m {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 163;
-    stroke-width:2;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:2;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:3;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 163;
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+}
 }
 
 @keyframes dash-x {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 19;
-    stroke-width:2;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:2;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:3;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 19;
 }
-/*---reflect animation---*/
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+}
+}
+//---reflect animation---
 
 @keyframes reflect-dash-a {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 97;
-    stroke-width:3;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:3;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:1;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 97;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+stroke-width:1;
+}
 }
 
 @keyframes reflect-dash-n {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 95;
-    stroke-width:3;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:3;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:1;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 95;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+stroke-width:1;
+}
 }
 
 @keyframes reflect-dash-d {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset:109;
-    stroke-width:3;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:3;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:1;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset:109;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+stroke-width:1;
+}
 }
 
 @keyframes reflect-dash-e {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 94;
-    stroke-width:3;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:3;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:1;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 94;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+stroke-width:1;
+}
 }
 
 @keyframes reflect-stroke-dot {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 163;
-    stroke-width:3;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:3;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:1;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 163;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+stroke-width:1;
+}
 }
 
 @keyframes reflect-dash-m {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 163;
-    stroke-width:3;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:3;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:2;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 163;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
 }
 
 @keyframes reflect-dash-x {
-  0%{
-    stroke-opacity:0;
-    stroke-dashoffset: 19;
-    stroke-width:3;
-  }
-  50% {
-    stroke-opacity:1;
-    stroke-dashoffset:0;
-    stroke-width:3;
-  }
-  100% {
-    stroke-opacity:1;
-    stroke-dashoffset: 0;
-    stroke-width:2;
-  }
+0%{
+stroke-opacity:0;
+stroke-dashoffset: 19;
+
+}
+50% {
+stroke-opacity:1;
+stroke-dashoffset:0;
+
+}
+100% {
+stroke-opacity:1;
+stroke-dashoffset: 0;
+
+}
+}*/
+
+/*
+&--reflect{
+opacity: 0.08;
+transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 57, 0, 1);
 }
 
-@keyframes bounce{
-  from{
-    stroke:white;
-  }
-  to{
-    stroke:black;
-  }
+&--reflect{
+.logo__letter{
+&--a path{
+animation-name: reflect-dash-a!important;          }
+&--n path{
+animation-name: reflect-dash-n!important;
 }
+&--d path{
+animation-name: reflect-dash-d!important;
+}
+&--e path{
+animation-name: reflect-dash-e!important;
+}
+&--dot path{
+animation-name: reflect-dash-dot!important;
+}
+&--m path{
+animation-name: reflect-dash-m!important;
+}
+&--x path{
+animation-name: reflect-dash-x!important;
+}
+}
+}*/
