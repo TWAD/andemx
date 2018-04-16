@@ -8,11 +8,11 @@
 		//background-image: radial-gradient(circle at right, $light 0, hsl(213, 100%, 25%) 100%);
 
 		height:100%;
-		background:linear-gradient(to bottom, #4b98ff, #5c3bb4);
+		background:linear-gradient(to bottom, $app-background-light, $app-background);
 		/*transition:background 5s bezier(swift) 5s;
 		background:linear-gradient(to bottom, #4b98ff, #5c3bb4);*/
 		&:before{
-			transition:opacity 5s bezier('swift');
+			transition:opacity $duration-ligthing bezier(linear);
 			opacity:1;
 			content:"";
 			top:0;
@@ -20,7 +20,7 @@
 			display:block;
 			height:100%;
 			width:100%;
-			background-color: #5c3bb4;
+			background-color: $app-background;
 		}
 
 	}

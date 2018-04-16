@@ -42,16 +42,7 @@ $logo-shadow:hsla(243,39%,45%,0.4);
 		.logo__svg{
 			padding:64px 115px;
 			//transform-origin:0  0;
-			transform:scale(1.2);
-			transition:filter 5s bezier(swift);
-			filter:drop-shadow(0 -1pt 0pt white);
-			//  &--ready{
-		}
-	}
-	&--lighting {
-		.logo__svg{
-
-			//margin-top:-4pt;
+			transform:scale(1);
 			filter:
 			drop-shadow(0 -1pt 0pt white)
 			drop-shadow(0 0.25pt 0pt $logo-shape)
@@ -59,7 +50,21 @@ $logo-shadow:hsla(243,39%,45%,0.4);
 			drop-shadow(0 0.75pt 0pt $logo-shape)
 			drop-shadow(0 1pt 0pt $logo-shape)
 			drop-shadow(0 1pt 0pt $logo-shape)
-			//
+
+			drop-shadow(0 0pt 0pt darken($logo-shadow,100%));
+		}
+	}
+	&--lighting {
+		.logo__svg{
+			transition:filter $duration-ligthing bezier(linear);
+			filter:
+			drop-shadow(0 -1pt 0pt white)
+			drop-shadow(0 0.25pt 0pt $logo-shape)
+			drop-shadow(0 0.5pt 0pt $logo-shape)
+			drop-shadow(0 0.75pt 0pt $logo-shape)
+			drop-shadow(0 1pt 0pt $logo-shape)
+			drop-shadow(0 1pt 0pt $logo-shape)
+
 			drop-shadow(0 0pt 0pt darken($logo-shadow,100%))
 			//drop-shadow(0 0pt 1pt darken($logo-shadow,100%))
 			//logo-shape
@@ -90,15 +95,27 @@ $logo-shadow:hsla(243,39%,45%,0.4);
 		//animation-delay
 		$count:10;
 		$delay:$animation-duration/$phi/$phi;
+		$count-x:4;
+		$delay-x:100;
 		@for $i from 1 through $count {
 			&:nth-child(#{$i}) path {
 				animation-delay:#{(($i)-1)*$delay}ms;
+				/*@for $j from 1 through $count-x {
+					&:nth-child(#{$j}) {
+						animation-delay:#{(($i)-1)*$delay+($delay-x*$j)}ms;
+					}
+				}*/
 			}
 		}
 	}
 
 	&__box{
 		display:none;
+	}
+	&__letter--x{
+    transform-origin: 212px 25px;
+		animation:logo-x-rotate 1s bezier('deceleration');
+		animation-delay:2391ms;
 	}
 }
 
@@ -108,293 +125,22 @@ $logo-shadow:hsla(243,39%,45%,0.4);
 		0%{
 			stroke-opacity:0;
 			stroke-dashoffset: nth($list-offset, $i);
-
 		}
 		50% {
 			stroke-opacity:1;
 			stroke-dashoffset: 0;
-
 		}
 		100% {
 			stroke-opacity:1;
 			stroke-dashoffset: 0;
-
 		}
 	}
 }
-/*
-@keyframes dash-a {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 97;
-
+@keyframes logo-x-rotate {
+	0%{
+		transform:rotate(0deg);
+	}
+	100% {
+		transform:rotate(-360deg);
+	}
 }
-50% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-}
-
-@keyframes dash-n {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 95;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-}
-
-@keyframes dash-d {
-0%{
-stroke-opacity:0;
-stroke-dashoffset:109;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-}
-
-@keyframes dash-e {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 94;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-}
-
-@keyframes stroke-dot {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 163;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-}
-100% {
-stroke-opacity:0;
-stroke-dashoffset: 0;
-}
-}
-
-@keyframes dash-m {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 163;
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-}
-}
-
-@keyframes dash-x {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 19;
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-}
-}
-//---reflect animation---
-
-@keyframes reflect-dash-a {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 97;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-stroke-width:1;
-}
-}
-
-@keyframes reflect-dash-n {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 95;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-stroke-width:1;
-}
-}
-
-@keyframes reflect-dash-d {
-0%{
-stroke-opacity:0;
-stroke-dashoffset:109;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-stroke-width:1;
-}
-}
-
-@keyframes reflect-dash-e {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 94;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-stroke-width:1;
-}
-}
-
-@keyframes reflect-stroke-dot {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 163;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-stroke-width:1;
-}
-}
-
-@keyframes reflect-dash-m {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 163;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-}
-
-@keyframes reflect-dash-x {
-0%{
-stroke-opacity:0;
-stroke-dashoffset: 19;
-
-}
-50% {
-stroke-opacity:1;
-stroke-dashoffset:0;
-
-}
-100% {
-stroke-opacity:1;
-stroke-dashoffset: 0;
-
-}
-}*/
-
-/*
-&--reflect{
-opacity: 0.08;
-transform: matrix3d(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 57, 0, 1);
-}
-
-&--reflect{
-.logo__letter{
-&--a path{
-animation-name: reflect-dash-a!important;          }
-&--n path{
-animation-name: reflect-dash-n!important;
-}
-&--d path{
-animation-name: reflect-dash-d!important;
-}
-&--e path{
-animation-name: reflect-dash-e!important;
-}
-&--dot path{
-animation-name: reflect-dash-dot!important;
-}
-&--m path{
-animation-name: reflect-dash-m!important;
-}
-&--x path{
-animation-name: reflect-dash-x!important;
-}
-}
-}*/

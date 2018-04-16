@@ -1,19 +1,27 @@
 // main: ../main.scss
 
 @function bezier($curve){
-  @if ($curve == 1 or $curve == standard) {
-    @return cubic-bezier(0.4, 0.0, 0.2, 1);
-  } @else if ($curve == 2 or $curve == deceleration) {
-    @return cubic-bezier(0.0, 0.0, 0.2, 1);
-  } @else if ($curve == 3 or $curve == acceleration) {
-    @return cubic-bezier(0.4, 0.0, 1, 1);
-  } @else if ($curve == 4 or $curve == sharp) {
-    @return cubic-bezier(0.4, 0.0, 0.6, 1);
-  } @else if ($curve == 5 or $curve == swift) {
-    @return cubic-bezier(0.55, 0, 0.1, 1);
-  } @else if ($curve == 6 or $curve == ease-in-out) {
-    @return ease-in-out;
-  }@else {
-    @return ease;
-  }
+			 @if ($curve == 1 or $curve == standard) {
+		@return cubic-bezier(0.4, 0.0, 0.2, 1);
+	} @else if ($curve == 2 or $curve == deceleration) {
+		@return cubic-bezier(0.0, 0.0, 0.2, 1);
+	} @else if ($curve == 3 or $curve == acceleration) {
+		@return cubic-bezier(0.4, 0.0, 1, 1);
+	} @else if ($curve == 4 or $curve == sharp) {
+		@return cubic-bezier(0.4, 0.0, 0.6, 1);
+	} @else if ($curve == 5 or $curve == swift) {
+		@return cubic-bezier(0.55, 0, 0.1, 1);
+	} @else if ($curve == 6 or $curve == ease) {
+		@return ease;
+	} @else if ($curve == 7 or $curve == ease-in) {
+		@return ease-in;
+	} @else if ($curve == 8 or $curve == ease-out) {
+		@return ease-out;
+	} @else if ($curve == 9 or $curve == ease-in-out) {
+		@return ease-in-out;
+	} @else if ($curve == 10 or $curve == linear) {
+		@return linear;
+	} @else{
+		@return null;
+	}
 }
