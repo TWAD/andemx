@@ -1,10 +1,4 @@
 // main: ../main.scss
-$animation-duration:1000;
-$list-letter: 'a' 'n' 'd' 'e' 'dot' 'm' 'x';
-$list-offset: 97 95 109 94 94 163 19;
-
-$logo-shape:hsla(242,34%,55%,1);
-$logo-shadow:hsla(243,39%,45%,0.4);
 
 .logo{
 	&--standard path{
@@ -115,7 +109,7 @@ $logo-shadow:hsla(243,39%,45%,0.4);
 	&__letter--x{
     transform-origin: 212px 25px;
 		animation:logo-x-rotate 1s bezier('deceleration');
-		animation-delay:2391ms;
+		animation-delay:2250ms;
 	}
 }
 
@@ -141,6 +135,6 @@ $logo-shadow:hsla(243,39%,45%,0.4);
 		transform:rotate(0deg);
 	}
 	100% {
-		transform:rotate(-360deg);
+		transform:rotate(360deg);
 	}
 }

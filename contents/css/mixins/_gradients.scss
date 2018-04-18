@@ -1,0 +1,26 @@
+// main: ../main.scss
+
+//no Repeating Gradient Properties supported
+
+@function gradient($type,$to,$colors){
+	@return #{$type}-gradient($to,$colors);
+}
+/*
+.app__container{
+	background: gradient(radial,null,(red, blue))!important;
+}*/
+
+
+/*------------------------------------------
+background: linear-gradient(red, yellow);
+background: linear-gradient(to right, red , yellow);
+background: linear-gradient(to bottom right, red, yellow);
+background: linear-gradient(-90deg, red, yellow);
+background: linear-gradient(red, yellow, green);
+background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+background: radial-gradient(red, yellow, green);
+background: radial-gradient(red 5%, yellow 15%, green 60%);
+background: radial-gradient(circle, red, yellow, green);
+
+------------------------------------------*/
