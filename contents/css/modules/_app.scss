@@ -29,4 +29,15 @@
 			opacity:0;
 		}
 	}
+	&--particule{
+		.app__container{
+			background: url('../images/background.png') no-repeat center fixed;
+			-webkit-background-size: cover;
+			background-size: cover;
+			//background:radial-gradient(at top,#29ABE2,  black );
+			&:before{
+				//background:black;
+			}
+		}
+	}
 }

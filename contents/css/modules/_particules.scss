@@ -1,0 +1,81 @@
+// main: ../main.scss
+
+.particule{
+	position:relative;
+	height:100%;
+	overflow:hidden;
+	&__element{
+		position: relative;
+		//border-radius: 50%;
+		$color: hsla(0, 0%, 100%, 0.75);
+		$border: hsla(0, 0%, 100%, 1);
+		$relief: hsla(0, 0%, 50%, 1);
+		animation-fill-mode:both;
+		border:1px solid $border;
+		box-shadow:inset 0 0 2px $relief;
+		//transform-origin:0 0;
+
+		//transform: translate3d((random(100) * 1vw), (random(90) * 1vh), (random(100) * 1px));
+		background:$color;//random(50)/100
+
+		@for $i from 1 through 60 {
+			@keyframes particle-animation-#{$i} {
+					100% {
+						transform: translate3d((random(100) * 2vw), (random(100) * 2vh), (random(100) * 1px));
+					}
+
+			}
+			@keyframes particle-animation-#{$i} {
+					100% {
+						transform: translate3d((random(100) * 2vw), (random(100) * 2vh), (random(100) * 1px));
+					}
+
+			}
+			&:nth-child(#{$i}){
+			transform: translate3d((random(100) * 1vw), (random(100) * 1vh), (random(100) * 1px)) rotate(180deg);
+				$distance:random(10);
+				$size: $distance + px;
+				height: $size;
+				width: $size;
+				opacity:1/4*$distance * $distance /10;
+				/*
+				@if $distance == 10{
+					opacity:0.1;
+				}
+				@elseif $distance == 9{
+					opacity:0.2;
+				}
+				@elseif $distance == 8{
+					opacity:0.3;
+				}
+				@elseif $distance == 7{
+					opacity:0.4;
+				}
+				@elseif $distance == 6{
+					opacity:0.5;
+				}
+				@elseif $distance == 5{
+					opacity:0.6;
+				}
+				@elseif $distance == 4{
+					opacity:0.7;
+				}
+				@elseif $distance == 3{
+					opacity:0.8;
+				}
+				@elseif $distance == 2{
+					opacity:0.9;
+				}
+				@elseif $distance == 1{
+					opacity:1;
+				}*/
+				//filter:blur($distance/2 +px);
+				//10 => 1
+				//5 => 5
+				//1 => 10
+				animation-delay: -$i * .2s;
+				animation: particle-animation-#{$i} 10s cubic-bezier(random(50)/100,random(50)/100,random(50)/100,random(50)/100) infinite;
+			}
+		}
+	}
+}
