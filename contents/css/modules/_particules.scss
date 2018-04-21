@@ -13,21 +13,29 @@
 			$distance:random(20);
 			$opacity:$distance/2;
 			$speed:$opacity+10;
+			$x:random(45);
+			$y:random(45);
+			$z:random(45);
 
 			@keyframes particle-animation-#{$i} {
 				0% {
 					visibility:hidden;
-					transform: translate3d(-10 * 1vw, random(100) * 1vh, 0);
+					transform: translate3d(-10 * 1vw, random(100) * 1vh, 0)
+					perspective($distance*1000+px) rotateX(-$x+deg) rotateY(-$y+deg) rotateZ(-$z+deg);
 				}
 				1% {
 					visibility:visible;
-					transform: translate3d(-10 * 1vw, random(100) * 1vh, 0);
+					transform: translate3d(-10 * 1vw, random(100) * 1vh, 0)
+					perspective($distance*1000+px) rotateX(-$x+deg) rotateY(-$y+deg) rotateZ(-$z+deg)
 				}
 				99% {
-					transform: translate3d(110 * 1vw, random(100) * 1vh, 0);
+					transform: translate3d(110 * 1vw, random(100) * 1vh, 0)
+					perspective($distance*1000+px) rotateX($x+deg) rotateY($y+deg) rotateZ($z+deg);
 				}
 				100% {
-					transform: translate3d(110 * 1vw, random(100) * 1vh, 0);
+					transform: translate3d(110 * 1vw, random(100) * 1vh, 0)
+					perspective($distance*1000+px) rotateX($x+deg) rotateY($y+deg) rotateZ($z+deg);
+
 					visibility:hidden;
 				}
 
