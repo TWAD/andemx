@@ -6,56 +6,88 @@
 	overflow:hidden;
 	&__element{
 		position: relative;
-		&:before{
-			position: absolute;
-			content:"";
-			//border-radius: 50%;
-			$color: hsla(0, 0%, 100%, 0.75);
-			$border: hsla(0, 0%, 100%, 1);
-			$relief: hsla(0, 0%, 50%, 1);
-			animation-fill-mode:both;
-			border:1px solid $border;
-			box-shadow:inset 0 0 2px $relief;
-
-			//transform: translate3d((random(100) * 1vw), (random(90) * 1vh), (random(100) * 1px));
-			background:$color;//random(50)/100
-
-		}
+		animation-fill-mode:both;
+		border-radius:50%;
 
 		@for $i from 1 through 60 {
-			$x:random(100);
-			$y:random(100);
+			$distance:random(20);
+			$opacity:$distance/2;
+			$speed:$opacity+10;
 
-			@keyframes particle-animation-y-#{$i} {
+			@keyframes particle-animation-#{$i} {
+				0% {
+					visibility:hidden;
+					transform: translate3d(-10 * 1vw, random(100) * 1vh, 0);
+				}
+				1% {
+					visibility:visible;
+					transform: translate3d(-10 * 1vw, random(100) * 1vh, 0);
+				}
+				99% {
+					transform: translate3d(110 * 1vw, random(100) * 1vh, 0);
+				}
 				100% {
-					transform: translate3d(random(100) * 1vh);
+					transform: translate3d(110 * 1vw, random(100) * 1vh, 0);
+					visibility:hidden;
 				}
 
 			}
 			&:nth-child(#{$i}){
-				transform: translate(random(100) * 2vw);
+				$color: hsla(0, 0%, 100%, $distance/10);
+				background:$color;
+				$bezier-random:linear;
+				visibility:hidden;
+				animation:particle-animation-#{$i} $speed*10s $bezier-random infinite;
+				box-shadow:0 0 $distance/2+px 0 white; //cost almost nothing
 
-				animation-delay: $i * .2s;
-				/*	animation:
-				particle-animation-x-#{$i} 10s cubic-bezier(random(100)/100,random(100)/100,random(100)/100,random(100)/100) infinite;
-				*/
-
-				&:before{
-					$distance:random(10);
-					$size: $distance + px;
-					height: $size;
-					width: $size;
-					opacity: $distance /10;
-					transform: translate(random(10) * 2vh);
-
-					animation-delay: $i * .2s;
-					/*animation:
-					particle-animation-y-#{$i} 10s bezier(swift) infinite
-					//particle-animation-y-#{$i} 60s cubic-bezier(random(100)/100,random(100)/100,random(100)/100,random(100)/100) infinite
-					;*/
+				//filter:blur($distance*$distance/100+px);//cost too much
+				@if $opacity == 10{
+					opacity:0.1;
 				}
-				/*transform: translateY(random(100) * 1vh) translateX(random(100) * 1vh);*/
-			}
+				@elseif $opacity == 9{
+					opacity:0.1;
+				}
+				@elseif $opacity == 8{
+					opacity:0.2;
+				}
+				@elseif $opacity == 7{
+					opacity:0.2;
+				}
+				@elseif $opacity == 6{
+					opacity:0.3;
+				}
+				@elseif $opacity == 5{
+					opacity:0.3;
+				}
+				@elseif $opacity == 4{
+					opacity:0.4;
+				}
+				@elseif $opacity == 3{
+					opacity:0.6;
+				}
+				@elseif $opacity == 2{
+					opacity:0.8;
+				}
+				@elseif $opacity == 1{
+					opacity:1;
+				}@else{
+					opacity:0.1;
+				}
+				$size: $distance + px;
+				height: $size;
+				width: $size;
+				//opacity: $distance /10;
+				//transform: translate(random(10) * 2vh);
+
+				animation-delay: $i * -10+s;
+				/*&:before{
+				animation:
+				particle-animation-y-#{$i} 10s bezier(swift) infinite
+				//particle-animation-y-#{$i} 60s cubic-bezier(random(100)/100,random(100)/100,random(100)/100,random(100)/100) infinite
+				;
+			}*/
+			/*transform: translateY(random(100) * 1vh) translateX(random(100) * 1vh);*/
 		}
 	}
+}
 }

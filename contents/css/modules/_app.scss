@@ -1,4 +1,6 @@
 // main: ../main.scss
+$app-background:black;
+$app-background-light:black;
 
 .app{
 	position:relative;
@@ -34,6 +36,7 @@
 			background: url('../images/background.png') no-repeat center fixed;
 			-webkit-background-size: cover;
 			background-size: cover;
+			//background-color:black;
 			//background:radial-gradient(at top,#29ABE2,  black );
 			&:before{
 				//background:black;
