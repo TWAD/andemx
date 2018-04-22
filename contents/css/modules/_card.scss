@@ -1,0 +1,43 @@
+// main: ../main.scss
+
+.card{
+	width:100%;
+	height:100%;
+	padding:32px;
+	&__header{
+
+	}
+	&__body{
+
+
+	}
+	&__footer{
+
+	}
+	&__trigger{
+		width:64px;
+		height:64px;
+		background-color:white;
+		border-radius:50%;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		line-height:64px;
+		text-align:center;
+		cursor:pointer;
+		transition:all 225*2ms bezier(swift);
+	}
+	&--open{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		.card__trigger{
+			width:100%;
+			height:100%;
+			border-radius:8px;
+			transition:all 195*2ms bezier(swift);
+		}
+	}
+
+}

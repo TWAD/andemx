@@ -33,4 +33,6 @@ function lighting(){
 $logo.find('.logo__letter--x').one('animationend',lighting);
 //$logo.on('transitionend',function(){console.log("transitionend")});
 
+$('.card__trigger').on('click touch',function(){$(this).closest('.card').toggleClass('card--open')});
+
 });

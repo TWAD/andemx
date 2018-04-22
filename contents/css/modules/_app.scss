@@ -5,8 +5,21 @@ $app-background-light:black;
 .app{
 	position:relative;
 	height:100%;
-	&__container{
+	&__header{
+
+	}
+	&__body{
 		position:relative;
+		width:100%;
+		height:100%;
+	}
+	&__footer{
+
+	}
+	&__background{
+		position:absolute;
+		height:100%;
+		width:100%;
 		//background-image: radial-gradient(circle at right, $light 0, hsl(213, 100%, 25%) 100%);
 
 		height:100%;
@@ -27,13 +40,16 @@ $app-background-light:black;
 
 	}
 	&--lighting{
-		.app__container:before{
+		.app__background:before{
 			opacity:0;
 		}
 	}
 	&--particule{
-		.app__container{
+		.app__background{
 			background: url('../images/background_revert.png') no-repeat center fixed;
+
+			/*background-color: blue;
+			background-blend-mode: difference;*/
 			-webkit-background-size: cover;
 			background-size: cover;
 			//background-color:black;
