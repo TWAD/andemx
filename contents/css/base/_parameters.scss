@@ -2,14 +2,15 @@
 
 $phi:1.618;
 $light:hsl(181, 100%, 75%);
-$duration-ligthing:2000ms;
+$duration-ligthing:1000ms;
 $app-background:#5c3bb4;
 $app-background-light:#4b98ff;
 
 //svg
-$animation-duration:1000;
-$list-letter: 'a' 'n' 'd' 'e' 'dot' 'm' 'x';
-$list-offset: 97 95 109 94 94 163 19;
+$animation-duration:2000;
+$list-letter: 'a' 'n' 'd' 'e' 'm' 'x' 'dot';
+//$list-offset: 97 95 109 94 94 163 19;
+$list-offset: 232 229 255 234  393 46 0;
 $logo-shape:hsla(242,34%,55%,1);
 $logo-shadow:hsla(243,39%,45%,0.4);
 

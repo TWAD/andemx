@@ -1,5 +1,6 @@
 // main: ../main.scss
 
+
 .logo{
 	&--standard path{
 		animation-timing-function: bezier(1);
@@ -32,20 +33,11 @@
 				}
 			}
 		}
-
-		.logo__svg{
-			padding:64px 115px;
-			//transform-origin:0  0;
-			transform:scale(1);
-			filter:
-			drop-shadow(0 -1pt 0pt white)
-			drop-shadow(0 0.25pt 0pt $logo-shape)
-			drop-shadow(0 0.5pt 0pt $logo-shape)
-			drop-shadow(0 0.75pt 0pt $logo-shape)
-			drop-shadow(0 1pt 0pt $logo-shape)
-			drop-shadow(0 1pt 0pt $logo-shape)
-
-			drop-shadow(0 0pt 0pt darken($logo-shadow,100%));
+	}
+	&--growth{
+		path{
+			stroke-width:12px!important;
+			transition:stroke-width 500ms bezier(bounce);
 		}
 	}
 	&--lighting {
@@ -72,15 +64,30 @@
 			;
 		}
 	}
+
+	.logo__svg{
+		padding:64px 115px;
+		//transform-origin:0  0;
+		transform:scale(1);
+		filter:
+		drop-shadow(0 -1pt 0pt white)
+		drop-shadow(0 0.25pt 0pt $logo-shape)
+		drop-shadow(0 0.5pt 0pt $logo-shape)
+		drop-shadow(0 0.75pt 0pt $logo-shape)
+		drop-shadow(0 1pt 0pt $logo-shape)
+		drop-shadow(0 1pt 0pt $logo-shape)
+
+		drop-shadow(0 0pt 0pt darken($logo-shadow,100%));
+	}
 	&__letter{
 		path{
 			fill:none;
 			stroke-linecap:round;
 			stroke-linejoin:round;
 			stroke-miterlimit:4;
-			stroke-opacity:1;
-			stroke-width:3pt;
-			stroke:hsla(0,0%,93%,1)!important;
+			stroke-opacity:0;
+			stroke-width:4px;
+			stroke:hsla(240,100%,50%,1)!important;
 
 			animation-duration:$animation-duration+ms;
 			animation-iteration-count:1;
@@ -95,37 +102,37 @@
 			&:nth-child(#{$i}) path {
 				animation-delay:#{(($i)-1)*$delay}ms;
 				/*@for $j from 1 through $count-x {
-					&:nth-child(#{$j}) {
-						animation-delay:#{(($i)-1)*$delay+($delay-x*$j)}ms;
-					}
-				}*/
+				&:nth-child(#{$j}) {
+				animation-delay:#{(($i)-1)*$delay+($delay-x*$j)}ms;
 			}
-		}
+		}*/
 	}
+}
+}
 
-	&__box{
-		display:none;
-	}
-	&__letter--x{
-    transform-origin: 212px 25px;
-		animation:logo-x-rotate 1s bezier('deceleration');
-		animation-delay:2250ms;
-	}
+&__box{
+	display:none;
+}/*
+&__letter--x{
+transform-origin: 212px 25px;
+animation:logo-x-rotate 1s bezier('deceleration');
+animation-delay:2250ms;
+}*/
 }
 
 /*--------------keyframes----------------------*/
 @for $i from 1 through length($list-letter){
 	@keyframes logo-offset-#{nth($list-letter, $i)} {
 		0%{
-			stroke-opacity:0;
+			stroke-opacity:0.25;
 			stroke-dashoffset: nth($list-offset, $i);
 		}
-		50% {
+		25% {
 			stroke-opacity:1;
 			stroke-dashoffset: 0;
 		}
 		100% {
-			stroke-opacity:1;
+			stroke-opacity:0.75;
 			stroke-dashoffset: 0;
 		}
 	}

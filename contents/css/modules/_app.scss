@@ -5,6 +5,8 @@ $app-background-light:black;
 .app{
 	position:relative;
 	height:100%;
+
+     overflow: hidden;
 	&__header{
 
 	}
@@ -12,6 +14,7 @@ $app-background-light:black;
 		position:relative;
 		width:100%;
 		height:100%;
+
 	}
 	&__footer{
 
@@ -26,37 +29,152 @@ $app-background-light:black;
 		background:linear-gradient(to bottom, $app-background-light, $app-background);
 		/*transition:background 5s bezier(swift) 5s;
 		background:linear-gradient(to bottom, #4b98ff, #5c3bb4);*/
-		&:before{
-			transition:opacity $duration-ligthing bezier(linear);
-			opacity:1;
+		&:before,&:after{
 			content:"";
 			top:0;
 			position:absolute;
 			display:block;
 			height:100%;
 			width:100%;
+		}
+		&:before{
+			transition:opacity $duration-ligthing bezier(linear);
+			opacity:1;
 			background-color: $app-background;
 		}
+		&:after{
+		}
 
 	}
-	&--lighting{
-		.app__background:before{
-			opacity:0;
+	&__loading{
+
+		transform:translateZ(0);//GPU
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin:-34px;
+		overflow:visible;
+		path{
+			transform-origin:center;
+			animation:loading 4s linear infinite;
+			fill:none;
+			stroke-dasharray:190;
+			stroke-dashoffset:-190;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			stroke-miterlimit:4;
+			stroke-width:4px;
+			stroke-opacity:1;
+			stroke:hsl(240,75%,50%);
+		}
+		&:before{
+			content:"";
+			width:68px;
+			height:68px;
+			position:absolute;
+			border:4px solid black;
+			box-sizing:border-box;
+			overflow:hidden;
+			//outline:2px solid blue;
+			border-radius:50%;
+			//box-shadow:;
+			opacity:0.04;
+			background-color:white;
+			z-index:10;
+		}
+		/*
+		&:after{
+		content:"";
+		width:64px;
+		height:64px;
+		position:absolute;
+		top:-4px;
+		left:-4px;
+		border:4px solid white;
+		overflow:hidden;
+		//outline:2px solid blue;
+		border-radius:50%;
+		//box-shadow:;
+		opacity:0.5;
+		z-index:10;
+	}*/
+}
+&__logo{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin: -58px -36px;
+	transform:translateX(0px);
+	transition:transform 4s bezier(ease-in-out);
+
+}
+&--lighting{
+	.app__background:before{
+		opacity:0;
+	}
+}
+&--particule{
+	.app__background{
+		//background: url('../images/background_revert.png') no-repeat center fixed;//remove to let the place of space live
+		.particule{
+			display:block;
+		}
+		/*background-color: blue;
+		background-blend-mode: difference;*/
+		-webkit-background-size: cover;
+		background-size: cover;
+		//background-color:black;
+		//background:radial-gradient(at top,#29ABE2,  black );
+		&:before{
+			//background:black;
 		}
 	}
-	&--particule{
-		.app__background{
-			background: url('../images/background_revert.png') no-repeat center fixed;
+}
+&--bb{//blackbox hide and go further
+	.app__background:after{
+		//opacity:0;
+		background:white!important;
+	}
+}
 
-			/*background-color: blue;
-			background-blend-mode: difference;*/
-			-webkit-background-size: cover;
-			background-size: cover;
-			//background-color:black;
-			//background:radial-gradient(at top,#29ABE2,  black );
-			&:before{
-				//background:black;
-			}
-		}
+&--ready{
+	.app__logo{
+		transform:translateX(-250px);
+	}
+	.app__loading{
+		display:none;
+	}
+}
+}
+
+/*
+#live{
+position: absolute;
+top: 50%;
+left: 50%;
+opacity:1;
+-webkit-transform: translateX(-50%) translateY(-50%);
+transform: translateX(-50%) translateY(-50%);
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+//z-index: -1000;
+overflow: hidden;
+}*/
+
+@keyframes loading {
+	0%{
+		stroke-opacity:0.8;
+		transform: rotate(720deg);
+		stroke-dashoffset: 190;
+	}
+	50%{
+		stroke-opacity:0.2;
+	}
+	100% {
+		stroke-opacity:0.8;
+		transform: rotate(0deg);
+		stroke-dashoffset: -190;
 	}
 }

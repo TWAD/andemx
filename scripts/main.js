@@ -16,7 +16,6 @@ $(function(){
 	$logo.css('width',svgContainerWidth);
 	$logo.css('height',svgContainerHeight);
 	*/
-	$logo.addClass('logo--animating');
 	setTimeout(function(){
 		console.log("grow");
 		//$logo.find(".logo__svg").addClass('logo__svg--ready');
@@ -26,13 +25,26 @@ $(function(){
 
 function lighting(){
 	console.log(">Lighting Scene");
-	$app.addClass('app--lighting');
+	//$app.addClass('app--lighting');
 	$logo.addClass('logo--lighting');
 }
 
 $logo.find('.logo__letter--x').one('animationend',lighting);
 //$logo.on('transitionend',function(){console.log("transitionend")});
 
+
 $('.card__trigger').on('click touch',function(){$(this).closest('.card').toggleClass('card--open')});
+
+setTimeout(function(){
+	console.log("app_ready");
+	$app.addClass('app--ready');
+	$logo.addClass('logo--animating');
+},2500);
+
+setTimeout(function(){
+	console.log("app_ready");
+	$logo.addClass('logo--growth');
+},8500);
+
 
 });

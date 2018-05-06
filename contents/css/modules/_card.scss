@@ -15,13 +15,23 @@
 
 	}
 	&__trigger{
-		width:64px;
+/*
+		     position: absolute;
+		     margin: auto;
+		     top: 0;
+		     right: 0;
+		     bottom: 0;
+		     left: 0;*/
+				 //display:inline-block;
+		width:256px;
 		height:64px;
 		background-color:white;
-		border-radius:50%;
+		border-radius:8px;
+		padding:8px 32px;
+		font-size:24px!important;
 		overflow:hidden;
 		text-overflow:ellipsis;
-		line-height:64px;
+		line-height:64px-18px;
 		text-align:center;
 		cursor:pointer;
 		transition:all 225*2ms bezier(swift);
