@@ -1,0 +1,21 @@
+// main: ../main.scss
+
+.area-background{
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  background-repeat: repeat;
+  background-size: cover;
+  transform:scale(2);
+  transform-origin: bottom;
+  @include background('../images/bg-water.jpg');
+  filter:blur(50px) grayscale(0.5);
+  transition:all 5s ease-out;
+  &--active{
+    filter:blur(25px);
+    transform:scale(1.1);
+    transition:all 5s ease-out;
+  }
+}

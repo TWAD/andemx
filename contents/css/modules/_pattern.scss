@@ -1,7 +1,7 @@
 // main: ../main.scss
 $pattern-color:transparent;
 //$pattern-color-fill:hsla(150,100%, 100%,0.2);
-$pattern-color-fill:hsla(0,100%, 0%,1);
+$pattern-color-fill:hsla(0,100%, 100%,1);
 .pattern{
 	&:after{
 		content:"";

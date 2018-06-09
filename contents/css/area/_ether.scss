@@ -1,0 +1,65 @@
+// main: ../main.scss
+
+.area-ether{
+  color:white;
+  font-size:250px;
+  position:fixed;
+
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+
+
+  height:100%;
+  width:100%;
+
+  //border:1px dashed white;
+  &__layer{
+    opacity:0.16;
+    @extend .pattern;
+    @extend .pattern--hideout;
+
+    position:absolute;
+    background-color:rgba(0,0,0,0.16);
+    transform-origin: center;
+    transition:transform 250ms ease-out;
+
+    @for $i from 0 through 10{
+
+      $size:$i*100%;
+      $off:-50% *($i - 1);
+
+
+      //$size:100%+10%*1;
+      //$off:($size*-0.5) *($i - 1);
+
+      &:nth-child(#{$i}){
+        height:$size;
+        width:$size;
+        left:$off;
+        top:$off;
+        //background-color:rgba(255,0,0,0.1);
+      }
+    }
+    /*
+    &:nth-child(1){
+    height:100%;
+    width:100%;
+    background-color:rgba(255,0,0,0.1)
+  }
+  &:nth-child(2){
+  height:200%;
+  width:200%;
+  left:-50%;
+  top:-50%;
+  background-color:rgba(0,255,0,0.1)
+}
+&:nth-child(3){
+height:300%;
+width:300%;
+left:-100%;
+top:-100%;
+background-color:rgba(0,0,255,0.1)
+}*/
+}
+}

@@ -1,0 +1,116 @@
+// main: ../main.scss
+
+body:not(.app--ready){
+  .area-overlay{
+    animation:logoLoading 3s infinite ease-out 1s;
+  }
+  .area-overlay__intro{
+  transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+body.app--ready{
+    .area-overlay{
+      animation:none;
+    }
+    .area-overlay__intro{
+    transform: translate(-50%, -50%) scale(1);
+    }
+}
+.area-overlay{
+  position:fixed;
+  //overflow:hidden;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  /*
+  background-image:url('../images/bp.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  */
+  &__intro{
+    position:relative;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%) scale(0);
+    width:200px;
+    height:200px;
+    perspective: none;
+    transition:transform 1s ease-out;
+  }
+
+}
+
+$logo-color:rgba(255,255,255,0.5);
+$logo-color-active:rgba(255,255,255,0.9);
+
+.logo{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform:scale(0.95) rotateX(55deg) rotateY(0deg) rotateZ(-45deg);
+  transition:transform 500ms ease-in-out;
+  &__face{
+    cursor:pointer;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+
+    border-radius: 0px;
+    transition:border 250ms linear;
+    border:4px solid $logo-color;
+    &:after{
+      content:'';
+      display:inline-block;
+      position:absolute;
+      width:200px;
+      height:4px;
+      top:100px;
+      margin-top:-4px;
+      margin-left:-4px;
+
+      background-color:$logo-color;
+      transition:background-color 250ms linear;
+    }
+    &--front{
+      transform: rotateY(0deg) translateZ(100px);
+      &:after{
+        transform:rotateZ(-13.5deg);
+      }
+    }
+    &--left{
+      transform: rotateY(-90deg) translateZ(100px);
+      &:after{
+        transform:rotateZ(-103.5deg);
+      }
+    }
+    &--bottom{
+      transform: rotateX(-90deg) translateZ(100px);
+      &:after{
+        transform:rotateZ(-103.5deg);
+      }
+    }
+  }
+  &:not(.logo--active):hover{
+    transform:scale(1) rotateX(55deg) rotateY(0deg) rotateZ(-45deg);
+    .logo__face{
+      border-color:$logo-color-active;
+      &:after{
+        background-color:$logo-color-active;
+      }
+    }
+  }
+  &--active{
+    .logo__face{
+      border-radius:2px;
+      border-color:$logo-color-active;
+      &:after{
+        background-color:$logo-color-active;
+      }
+    }
+    transition:transform 5s ease-out;
+    transform:rotateX(0deg) rotateY(0deg) rotateZ(-90deg);
+  }
+}

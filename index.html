@@ -5,72 +5,58 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./contents/css/main.min.css">
-	<link rel="stylesheet" type="text/css" href="./contents/fonts/fontawesome/web-fonts-with-css/fontawesome-all.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="./contents/fonts/fontawesome/web-fonts-with-css/fontawesome-all.min.css">-->
 	<!--<link rel="stylesheet" type="text/css" href="./contents/fonts/fontawesome/svg-with-js/fa-svg-with-js.min.css">-->
-	<style>
-	html,body{
 
-	}
-	#tile-container{
-		font-size: 0;
-		overflow: hidden;
 
-		perspective: 1980px;
-		perspective-origin:0% 0%;
-		transform-style:preserve-3d;
-		transition: transform 250ms ease-in-out 50ms;
-		transform:translateX(0%) translateY(0%)  rotateX(45deg) rotateY(5deg) rotateZ(-45deg);
-		overflow:visible;
-	}
-	#tile{
-		position:absolute;
-		visibility: hidden;
-		z-index:-1;
-	}
-	.tile{
-		/*border:1px solid white;*/
-		overflow: visible;
-		position: relative;
-		display: inline-block;
-		width: 32px;
-		height: 32px;
-	}
-	.tile::after{
-		content:"";
-		position:absolute;
-		top:0;
-		left:0;
-		width:32px;
-		height:32px;
-		box-shadow:inset 0px 0px 8px 0 black;
-		background-color: darkgrey;
-
-		perspective: 1980px;
-		perspective-origin:0% 0%;
-		transform-style:preserve-3d;
-		transition: transform 250ms ease-in-out 50ms;
-		transform:translateX(0%) translateY(0%)  rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-		overflow:visible;
-	}
-	.tile:hover::after{
-		z-index:10;
-		background-color: black;
-		transform:translateX(0%) translateY(0%)  rotateX(45deg) rotateY(5deg) rotateZ(-45deg);
-
-	}
-	</style>
 	<title>andemx</title>
 </head>
 <body>
+	<div class="area-background" ></div>
+
+	<div class="area-ether" hidden>
+		<div class="area-ether__layer"></div>
+		<div class="area-ether__layer"></div>
+		<div class="area-ether__layer"></div>
+	</div>
+
+	<div class="area-site" hidden>
+		<div class="area-site__background"></div>
+		<div class="area-site__container">
+			<div class="area-site__entry why">WHY</div>
+			<div class="area-site__entry how">HOW</div>
+			<div class="area-site__entry what">WHAT</div>
+			<div class="area-site__entry who">WHO</div>
+			<div class="area-site__entry when">WHEN</div>
+			<div class="area-site__entry with">WITH</div>
+		</div>
+	</div>
+
+	<div class="area-overlay">
+		<div class="area-overlay__intro">
+			<div class="logo">
+				<div class="logo__face logo__face--front"></div>
+				<div class="logo__face logo__face--left"></div>
+				<div class="logo__face logo__face--bottom"></div>
+				<!--
+				<div class="logo__face logo__face--right"></div>
+					<div class="logo__face logo__face--back"></div>
+					<div class="logo__face logo__face--top"></div>
+				-->
+			</div>
+		</div>
+		<div class="are-overlay__loading"></div>
+	</div>
+	<!--
 	<div id="tile-container"></div>
 
 	<script id="tiletmpl" type="text/html">
-		<div class="tile"></div>
-	</script>
+	<div class="tile"></div>
+</script>-->
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="./scripts/main.js"></script>
-	<!--sourc image: https://www.pexels.com/photo/dark-blur-blurred-gradient-1526/-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="./scripts/main.js"></script>
+<!--sourc image: https://www.pexels.com/photo/dark-blur-blurred-gradient-1526/-->
 </body>
 
 </html>

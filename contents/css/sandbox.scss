@@ -5,3 +5,56 @@ $list-offset: 97 95 109 94 163 19;
     border:nth($list-offset, $i);
   }
 }
+
+
+
+html,body{
+
+}
+#tile-container{
+  font-size: 0;
+  overflow: hidden;
+
+  perspective: 1980px;
+  perspective-origin:0% 0%;
+  transform-style:preserve-3d;
+  transition: transform 250ms ease-in-out 50ms;
+  transform:translateX(0%) translateY(0%)  rotateX(45deg) rotateY(5deg) rotateZ(-45deg);
+  overflow:visible;
+}
+#tile{
+  position:absolute;
+  visibility: hidden;
+  z-index:-1;
+}
+.tile{
+  /*border:1px solid white;*/
+  overflow: visible;
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+.tile::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:32px;
+  height:32px;
+  box-shadow:inset 0px 0px 8px 0 black;
+  background-color: darkgrey;
+
+  perspective: 1980px;
+  perspective-origin:0% 0%;
+  transform-style:preserve-3d;
+  transition: transform 250ms ease-in-out 50ms;
+  transform:translateX(0%) translateY(0%)  rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  overflow:visible;
+}
+.tile:hover::after{
+  z-index:10;
+  background-color: black;
+  transform:translateX(0%) translateY(0%)  rotateX(45deg) rotateY(5deg) rotateZ(-45deg);
+
+}
