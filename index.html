@@ -1,141 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./contents/css/main.min.css">
 	<link rel="stylesheet" type="text/css" href="./contents/fonts/fontawesome/web-fonts-with-css/fontawesome-all.min.css">
 	<!--<link rel="stylesheet" type="text/css" href="./contents/fonts/fontawesome/svg-with-js/fa-svg-with-js.min.css">-->
+	<style>
+	html,body{
 
+	}
+	#tile-container{
+		font-size: 0;
+		overflow: hidden;
+
+		perspective: 1980px;
+		perspective-origin:0% 0%;
+		transform-style:preserve-3d;
+		transition: transform 250ms ease-in-out 50ms;
+		transform:translateX(0%) translateY(0%)  rotateX(45deg) rotateY(5deg) rotateZ(-45deg);
+		overflow:visible;
+	}
+	#tile{
+		position:absolute;
+		visibility: hidden;
+		z-index:-1;
+	}
+	.tile{
+		/*border:1px solid white;*/
+		overflow: visible;
+		position: relative;
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+	}
+	.tile::after{
+		content:"";
+		position:absolute;
+		top:0;
+		left:0;
+		width:32px;
+		height:32px;
+		box-shadow:inset 0px 0px 8px 0 black;
+		background-color: darkgrey;
+
+		perspective: 1980px;
+		perspective-origin:0% 0%;
+		transform-style:preserve-3d;
+		transition: transform 250ms ease-in-out 50ms;
+		transform:translateX(0%) translateY(0%)  rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+		overflow:visible;
+	}
+	.tile:hover::after{
+		z-index:10;
+		background-color: black;
+		transform:translateX(0%) translateY(0%)  rotateX(45deg) rotateY(5deg) rotateZ(-45deg);
+
+	}
+	</style>
 	<title>andemx</title>
 </head>
 <body>
-	<div class="app app--bb"><!-- app--particule app--lighting -->
-		<div class="app__background pattern--texture">
-			<div class="video-background">
-				<div class="video-foreground">
-					<!--
-					<iframe src="http://www.ustream.tv/embed/17074538?html5ui&autoplay=1" frameborder="0" allowfullscreen></iframe>
-				-->
-				<object data="http://www.ustream.tv/embed/17074538?html5ui&autoplay=1"></object>
-			</div>
-		</div>
-		<!--<object id="live" data="http://www.ustream.tv/embed/17074538?html5ui&autoplay=1"></object>-->
-		<div class="particule"><!-- bamboo_diagonal-lines_cage_texture-->
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-			<div class="particule__element"></div>
-		</div>
-	</div>
-	<div class="app__body">
-		<div class="card">
-			<div class="card__header"></div>
-			<div class="card__body"></div>
-			<div class="card__footer"></div>
-			<button class="button button--white button--phantom card__trigger">andemx</button>
-		</div>
-	</div>
-	<div class="app__loading">
-		<svg		version="1.1"		viewBox="0 0 68 68"		height="68px"		width="68px">
-			<g>
-				<path id="path822" d="M 66.000001,33.999994 C 66.000001,17.999998 53.200001,2 34.000001,2 14.800001,2 2,17.999998 2,33.999994 c 0,16.000001 12.800001,32.000012 32.000001,32.000012 19.2,0 32,-16.000011 32,-32.000012" />
-				<!--style="fill:none;stroke:#000000;stroke-width:3.80011392;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"-->
-			</g>
-		</svg>
+	<div id="tile-container"></div>
 
-	</div>
-	<div class="app__logo">
-		<svg class="logo logo--ease-in-out" version="1.1" viewBox="0" height="95.846809" width="558.28131">
-			<g id="svg-a" class="logo__letter logo__letter--a">
-				<path d="m 68.000001,89.761354 c 0,0 0,-28.800017 0,-32.000012 0,-15.999997 -12.8,-31.999994 -32,-31.999994 C 16.800001,25.761348 4,41.761345 4,57.761342 c 0,16.000001 12.800001,32.000012 32.000001,32.000012 19.2,0 32,-16.000011 32,-32.000012" />
-			</g>
-			<g class="logo__letter logo__letter--n" id="svg-n">
-				<path	d="m 87.680111,25.761345 v 64.000009 c 0,0 0,-28.800019 0,-32.000013 0,-15.999998 12.799999,-31.999996 32.000009,-31.999996 19.20001,0 32.00001,15.999998 32.00001,31.999996 0,3.199994 0,32.000013 0,32.000013"/>
-			</g>
-			<g class="logo__letter logo__letter--d" id="svg-d">
-				<path	d="m 235.294,6.0854539 -0.008,51.8280311 c -0.002,16.000006 -12.79249,31.854989 -31.99249,31.854989 -19.19998,0 -31.99998,-15.849992 -31.99998,-31.849988 0,-15.999997 12.8,-31.999983 31.99998,-31.999983 19.2,0 31.99491,15.997017 31.99491,31.997004"/>
-			</g>
-			<g class="logo__letter logo__letter--e" id="svg-e">
-				<path	d="m 254.94566,57.768417 h 63.97114 c 0.01,0 0.0288,0.0097 0.0288,-1.29e-4 0,-15.999863 -12.84537,-31.999857 -32.01444,-31.999857 -19.19132,1.1e-5 -31.98556,15.999994 -31.98556,31.999986 0,16.000016 12.79424,32.000007 31.98556,32.000007 h 18.59641"/>
-			</g>
-			<g class="logo__letter logo__letter--m" id="svg-m">
-				<path	d="m 338.61407,25.746858 v 63.999996 c 0,0 0,-28.799997 0,-32.000006 0,-15.99999 12.80001,-31.99999 31.99999,-31.99999 19.19999,10e-6 31.99998,16 31.99998,31.99999 0,3.200009 0,32.000006 0,32.000006 0,0 2e-5,-28.799997 2e-5,-32.000006 0,-15.99999 12.79999,-31.99999 31.99998,-31.99999 19.2,0 31.99999,16.915049 31.99999,31.99999 0,3.200009 0,32.000006 0,32.000006"/>
-			</g>
-			<g class="logo__letter logo__letter--x" id="svg-x">
-				<path	d="m 518.22073,57.763423 32,-32" />
-				<path	d="m 518.22073,57.763423 32,32"/>
-				<path	d="m 518.22073,57.763418 -32,32" />
-				<path	d="m 518.22073,57.763423 -32,-32" />
-			</g>
-			<g class="logo__letter logo__letter--dot" id="svg-dot">
-				<path d="m 319.00038,89.710844 v 0"/>
-			</g>
-		</svg>
+	<script id="tiletmpl" type="text/html">
+		<div class="tile"></div>
+	</script>
 
-	</div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="./scripts/main.js"></script>
-<!--sourc image: https://www.pexels.com/photo/dark-blur-blurred-gradient-1526/-->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="./scripts/main.js"></script>
+	<!--sourc image: https://www.pexels.com/photo/dark-blur-blurred-gradient-1526/-->
 </body>
 
 </html>

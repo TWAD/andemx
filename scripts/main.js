@@ -1,21 +1,36 @@
 var phi = 1.618;
 console.log('This would be the main JS file.');
 
+var widthMAx = screen.width;
+var heightMax = screen.height;
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+
+var size = 32;
+var nbTileX = Math.round(width/size);
+var nbTileY = Math.round(height/size);
+
+console.log("w/h:",nbTileX,",",nbTileY);
+
 $(function(){
+	var $tiletmpl = $("#tiletmpl");
+	/*
+	$tile.width();
+	$tile.height();
+	*/
+
+	var $tileContainer = $("#tile-container");
+	for(var i =0; i <nbTileX*nbTileY ;i++){
+		$tileContainer.append($tiletmpl.html());
+	}
+
+	/*
 	var $app = $(".app");
 	var $logo = $(".logo");
 	var appWidth = window.innerWidth;
 	var appHeight = window.innerHeight;
 	console.log("svg",appWidth,"---",appHeight);
-	/*
-	var svgContainerWidth = appWidth/phi;
-	var svgContainerHeight = appHeight/phi;
-
-	console.log("svg",svgContainerWidth,"---",svgContainerHeight);
-
-	$logo.css('width',svgContainerWidth);
-	$logo.css('height',svgContainerHeight);
-	*/
 	setTimeout(function(){
 		console.log("grow");
 		//$logo.find(".logo__svg").addClass('logo__svg--ready');
@@ -46,5 +61,5 @@ setTimeout(function(){
 	$logo.addClass('logo--growth');
 },8500);
 
-
+*/
 });
