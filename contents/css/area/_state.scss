@@ -1,0 +1,22 @@
+// main: ../main.scss
+
+.app--loading{
+  .area-background{
+    display:none;
+  }
+  .area-ether{
+    display:none;
+  }
+  .area-site{
+    display:none;
+  }
+}
+
+.app--ready{
+  .area-background{
+    display:none;
+  }
+  .area-ether{
+    display:none;
+  }
+}

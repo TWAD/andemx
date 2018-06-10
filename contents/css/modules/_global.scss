@@ -8,6 +8,12 @@ html,body{
 	font-size:16px;
 	font-weight:300;
 	font-family: 'Comfortaa', cursive;
+	background-color:$color-app-background;
+}
+
+body{
+  overflow:hidden;
+  padding:4% 8%;
 }
 
 

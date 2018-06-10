@@ -11,28 +11,95 @@
 
 	<title>andemx</title>
 </head>
-<body>
-	<div class="area-background" ></div>
+<body class="app--ready">
+	<div class="area-background" >
+	</div>
 
-	<div class="area-ether" hidden>
+	<div class="area-ether" >
 		<div class="area-ether__layer"></div>
 		<div class="area-ether__layer"></div>
 		<div class="area-ether__layer"></div>
 	</div>
 
-	<div class="area-site" hidden>
+	<div class="area-site" >
 		<div class="area-site__background"></div>
 		<div class="area-site__container">
-			<div class="area-site__entry why">WHY</div>
-			<div class="area-site__entry how">HOW</div>
-			<div class="area-site__entry what">WHAT</div>
-			<div class="area-site__entry who">WHO</div>
-			<div class="area-site__entry when">WHEN</div>
-			<div class="area-site__entry with">WITH</div>
+			<div class="area-site__entry why">
+				<div class="card ">
+					<div class="card__background ">
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+					</div>
+					WHY
+				</div>
+			</div>
+
+			<div class="area-site__entry how">
+				<div class="card ">
+					<div class="card__background ">
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+					</div>
+					HOW
+				</div>
+			</div>
+
+			<div class="area-site__entry what">
+				<div class="card ">
+					<div class="card__background ">
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+					</div>
+					WHAT
+				</div>
+			</div>
+
+			<div class="area-site__entry who">
+				<div class="card ">
+					<div class="card__background ">
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						WHO
+					</div>
+				</div>
+			</div>
+
+			<div class="area-site__entry when">
+				<div class="card ">
+					<div class="card__background ">
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+					</div>
+					WHEN
+				</div>
+			</div>
+
+			<div class="area-site__entry with">
+				<div class="card ">
+					<div class="card__background ">
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+						<div class="card__corner "></div>
+					</div>
+					WITH
+				</div>
+			</div>
+
 		</div>
 	</div>
 
-	<div class="area-overlay">
+	<div class="area-overlay" hidden>
 		<div class="area-overlay__intro">
 			<div class="logo">
 				<div class="logo__face logo__face--front"></div>
@@ -40,18 +107,32 @@
 				<div class="logo__face logo__face--bottom"></div>
 				<!--
 				<div class="logo__face logo__face--right"></div>
-					<div class="logo__face logo__face--back"></div>
-					<div class="logo__face logo__face--top"></div>
-				-->
-			</div>
+				<div class="logo__face logo__face--back"></div>
+				<div class="logo__face logo__face--top"></div>
+			-->
 		</div>
-		<div class="are-overlay__loading"></div>
 	</div>
-	<!--
-	<div id="tile-container"></div>
+	<div class="are-overlay__loading"></div>
+</div>
 
-	<script id="tiletmpl" type="text/html">
-	<div class="tile"></div>
+<div class="debugger">
+	<button state class="loading">loading</button>
+	<button state class="ready">ready</button>
+	<button state class="active">active</button>
+	<button state class="debug">debug</button>
+
+	<button toggle class="site">site</button>
+	<button toggle class="overlay">overlay</button>
+	<button toggle class="ether">ether</button>
+	<button toggle class="background">background</button>
+</div>
+
+
+<!--
+<div id="tile-container"></div>
+
+<script id="tiletmpl" type="text/html">
+<div class="tile"></div>
 </script>-->
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

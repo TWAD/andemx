@@ -1,9 +1,62 @@
 // main: ../main.scss
 
+$corner-color:rgba(255,255,255,1);
+$corner-color-reflect:rgba(255,255,255,0.5);
+$corner-size:8px;
+
 .card{
+	position:relative;
+	display:inline-block;
 	width:100%;
 	height:100%;
 	padding:32px;
+	color:white;
+	/*transform-style: preserve-3d;
+	transform: translateY(0px) rotateX(20deg) rotateY(-25deg) translateZ(0px);*/
+	&__background{
+
+	}
+	&__corner{
+		position:absolute;
+		width:$corner-size;
+		height:$corner-size;
+		//background-color:white;
+		border-color:$corner-color!important;
+		&::before{
+			content:'';
+			position:absolute;
+			width:$corner-size;
+			height:$corner-size;
+			border-color:$corner-color-reflect!important;
+			//transform:translateZ($corner-size*20);
+			//transform: translateY(10px) rotateX(20deg) rotateY(-25deg) translateZ(0px);
+			transform:translateZ($corner-size*-1);
+		}
+		&:nth-child(1),&:nth-child(1)::before{
+			top:0;
+			left:0;
+			border-top:1px solid $corner-color;
+			border-left:1px solid $corner-color;
+		}
+		&:nth-child(2),&:nth-child(2)::before{
+			top:0;
+			right:0;
+			border-top:1px solid $corner-color;
+			border-right:1px solid $corner-color;
+		}
+		&:nth-child(3),&:nth-child(3)::before{
+			bottom:0;
+			left:0;
+			border-bottom:1px solid $corner-color;
+			border-left:1px solid $corner-color;
+		}
+		&:nth-child(4),&:nth-child(4)::before{
+			bottom:0;
+			right:0;
+			border-bottom:1px solid $corner-color;
+			border-right:1px solid $corner-color;
+		}
+	}
 	&__header{
 
 	}
@@ -15,14 +68,6 @@
 
 	}
 	&__trigger{
-/*
-		     position: absolute;
-		     margin: auto;
-		     top: 0;
-		     right: 0;
-		     bottom: 0;
-		     left: 0;*/
-				 //display:inline-block;
 		width:256px;
 		height:64px;
 		background-color:white;

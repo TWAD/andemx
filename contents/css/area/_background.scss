@@ -8,14 +8,41 @@
   width:100%;
   background-repeat: repeat;
   background-size: cover;
-  transform:scale(2);
-  transform-origin: bottom;
-  @include background('../images/bg-water.jpg');
-  filter:blur(50px) grayscale(0.5);
+  transform:scale(1);
+  transform-origin: center;
+  @include background('../images/bg-mountain.jpg');
+  //filter:blur(50px) saturate(2);
   transition:all 5s ease-out;
   &--active{
-    filter:blur(25px);
-    transform:scale(1.1);
+    //filter:blur(50px) saturate(0.5);// grayscale(0.1);
+    transform:scale(2);
     transition:all 5s ease-out;
   }
 }
+/*
+.test-img{
+&:hover{
+  img:first-child{
+    filter:blur(0px);
+  }
+}
+  img{
+    position:absolute;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+    //height:100%;
+    object-fit: cover;
+  }
+  img:first-child{
+    transition:filter 250ms linear;
+    filter:blur(10px);
+  }
+  img:last-child{
+    -webkit-mask: linear-gradient(to top,transparent, black 50%,transparent);
+    -webkit-mask-size: 100% 100%;
+  }
+}
+*/

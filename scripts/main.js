@@ -32,14 +32,37 @@ function parralax(event){
 	var amplitudeV = 0.004;
 
 	var $etherLayer = $(".area-ether__layer");
-	$etherLayer.each(function(i,el){
-		var index=i;
-		var verticale = verticaleOffset*index*amplitudeV;
-		var horizontale = horizontaleOffset*index*amplitudeH;
-		$(el).css('transform','translate('+horizontale+'%,'+verticale+'%)');
-		//console.log(i,el);
-	});
+	if($etherLayer.length>0){
+		$etherLayer.each(function(i,el){
+			var index=i;
+			var verticale = verticaleOffset*index*amplitudeV;
+			var horizontale = horizontaleOffset*index*amplitudeH;
+			$(el).css('transform','translate('+horizontale+'%,'+verticale+'%)');
+			//console.log(i,el);
+		});
+	}else{
+		console.log("no-ether-layer");
+	}
 
+	var $site = $(".area-site");
+	var $corners = $(".card__corner");
+	if($site.length==1){
+		//console.log("rotate site");
+		var maxDegY=25;
+		var maxDegX=25;
+		var maxDegZ=25;
+
+		var degY = maxDegY/100*mouseLeft*100/width - maxDegY/2;
+		var degX = (maxDegX/100*mouseTop*100/height - maxDegX/2) *-1 ;
+		var degZ = 0;
+		var transform ='rotateX('+degX+'deg) rotateY('+degY+'deg)';
+		//var transformCorner =transform+' translateZ(-80px)';
+		$site.css('transform',transform);// rotateZ('+degZ+'deg)');
+		$corners.css('transform',transform);
+		//console.log($corners.length,'|',transformCorner);
+	}else{
+		console.log("no site found to be rotate");
+	}
 	//}, 16);
 }
 
@@ -50,26 +73,103 @@ function logoActive(){
 	$bg.toggleClass('area-background--active');
 }
 
-$(function(){
-	setTimeout(function(){
+function setState(event){
+	var $button = $(event.currentTarget);
+	var action = $button.attr('class');
+	$('body').attr('class','');
+	switch(action){
+		case 'loading':
+		$('body').addClass('app--loading');
+		break;
+		case 'ready':
 		$('body').addClass('app--ready');
-	},1000);
-	//console.log("loaded");
-	$("body").on('mousemove',parralax);
-	$(".logo").on('click',logoActive);
+		break;
+		case 'active':
+		$('body').addClass('app--active');
+		//logoActive();
+		break;
+		case 'debug':
+		$('body').addClass('app--debug');
+		break;
+	}
+}
+
+function toggle(event){
+	var $button = $(event.currentTarget);
+	var action = $button.attr('class');
+
+	var $background = $('.area-background');
+	var $ether = $('.area-ether');
+	var $site = $('.area-site');
+	var $overlay = $('.area-overlay');
+	//$('body').attr('class','');
+	switch(action){
+		case 'background':
+		var attr = $background.attr('hidden');
+		if (typeof attr !== typeof undefined && attr !== false) {
+			$background.removeAttr('hidden')
+		}else{
+			$background.attr('hidden','')
+		}
+		break;
+		case 'overlay':
+		var attr = $overlay.attr('hidden');
+		if (typeof attr !== typeof undefined && attr !== false) {
+			$overlay.removeAttr('hidden')
+		}else{
+			$overlay.attr('hidden','')
+		}
+		break;
+		case 'ether':
+		var attr = $ether.attr('hidden');
+		if (typeof attr !== typeof undefined && attr !== false) {
+			console.log("ether:remove hidden|",typeof attr,'|',attr);
+			$ether.removeAttr('hidden')
+		}else{
+			$ether.attr('hidden','hidden')
+		}
+		break;
+		case 'site':
+		var attr = $site.attr('hidden');
+		if (typeof attr !== typeof undefined && attr !== false) {
+			$site.removeAttr('hidden')
+		}else{
+			$site.attr('hidden','')
+		}
+		break;
+	}
+}
+
+$(function(){
+	//console.log($('button').length);
+	$('button[state]').on('click',setState);
+	$('button[toggle]').on('click',toggle);
+	//$('button').on('click',debug);
+
+});
+
+
+/*
+setTimeout(function(){
+$('body').addClass('app--ready');
+},1000);
+//console.log("loaded");
+$("body").on('mousemove',parralax);
+$(".logo").on('click',logoActive);
+*/
+$("body").on('mousemove',parralax);
 
 
 
-
-	//	var $tiletmpl = $("#tiletmpl");
-	/*
-	$tile.width();
-	$tile.height();
-	*/
-	/*
-	var $tileContainer = $("#tile-container");
-	for(var i =0; i <nbTileX*nbTileY ;i++){
-	$tileContainer.append($tiletmpl.html());
+//	var $tiletmpl = $("#tiletmpl");
+/*
+$tile.width();
+$tile.height();
+*/
+/*
+var $tileContainer = $("#tile-container");
+for(var i =0; i <nbTileX*nbTileY ;i++){
+$tileContainer.append($tiletmpl.html());
 }*/
 
 /*
@@ -109,4 +209,3 @@ $logo.addClass('logo--growth');
 },8500);
 
 */
-});
