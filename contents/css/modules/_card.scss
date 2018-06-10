@@ -1,7 +1,7 @@
 // main: ../main.scss
 
-$corner-color:rgba(255,255,255,1);
-$corner-color-reflect:rgba(255,255,255,0.5);
+$corner-color:rgba(255,255,255,75);
+$corner-color-reflect:rgba(255,255,255,0.25);
 $corner-size:8px;
 
 .card{
@@ -11,50 +11,49 @@ $corner-size:8px;
 	height:100%;
 	padding:32px;
 	color:white;
+	font-weight:bold;
+	font-size: 32px;
 	/*transform-style: preserve-3d;
 	transform: translateY(0px) rotateX(20deg) rotateY(-25deg) translateZ(0px);*/
 	&__background{
-
+		.card__corner{
+			border-color:$corner-color!important;
+		}
+	}
+	&__reflect{
+			.card__corner{
+				border-color:$corner-color-reflect!important;
+			}
 	}
 	&__corner{
 		position:absolute;
 		width:$corner-size;
 		height:$corner-size;
 		//background-color:white;
-		border-color:$corner-color!important;
-		&::before{
-			content:'';
-			position:absolute;
-			width:$corner-size;
-			height:$corner-size;
-			border-color:$corner-color-reflect!important;
-			//transform:translateZ($corner-size*20);
-			//transform: translateY(10px) rotateX(20deg) rotateY(-25deg) translateZ(0px);
-			transform:translateZ($corner-size*-1);
-		}
-		&:nth-child(1),&:nth-child(1)::before{
+		//border-color:$corner-color!important;
+		&:nth-child(1){
 			top:0;
 			left:0;
-			border-top:1px solid $corner-color;
-			border-left:1px solid $corner-color;
+			border-top:1px solid;
+			border-left:1px solid;
 		}
-		&:nth-child(2),&:nth-child(2)::before{
+		&:nth-child(2){
 			top:0;
 			right:0;
-			border-top:1px solid $corner-color;
-			border-right:1px solid $corner-color;
+			border-top:1px solid;
+			border-right:1px solid;
 		}
-		&:nth-child(3),&:nth-child(3)::before{
+		&:nth-child(3){
 			bottom:0;
 			left:0;
-			border-bottom:1px solid $corner-color;
-			border-left:1px solid $corner-color;
+			border-bottom:1px solid;
+			border-left:1px solid;
 		}
-		&:nth-child(4),&:nth-child(4)::before{
+		&:nth-child(4){
 			bottom:0;
 			right:0;
-			border-bottom:1px solid $corner-color;
-			border-right:1px solid $corner-color;
+			border-bottom:1px solid;
+			border-right:1px solid;
 		}
 	}
 	&__header{

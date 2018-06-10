@@ -45,7 +45,7 @@ function parralax(event){
 	}
 
 	var $site = $(".area-site");
-	var $corners = $(".card__corner");
+	var $corners = $(".card__reflect .card__corner");
 	if($site.length==1){
 		//console.log("rotate site");
 		var maxDegY=25;
@@ -56,9 +56,9 @@ function parralax(event){
 		var degX = (maxDegX/100*mouseTop*100/height - maxDegX/2) *-1 ;
 		var degZ = 0;
 		var transform ='rotateX('+degX+'deg) rotateY('+degY+'deg)';
-		//var transformCorner =transform+' translateZ(-80px)';
+		var transformCorner = transform+' translateZ(-32px)';
 		$site.css('transform',transform);// rotateZ('+degZ+'deg)');
-		$corners.css('transform',transform);
+		$corners.css('transform',transformCorner);
 		//console.log($corners.length,'|',transformCorner);
 	}else{
 		console.log("no site found to be rotate");
