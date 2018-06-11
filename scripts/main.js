@@ -23,47 +23,83 @@ function parralax(event){
 	doit = setTimeout(function(){
 	*/
 	//console.log(event);
-	var mouseTop = event.clientY;
-	var mouseLeft = event.clientX;
-	var verticaleOffset = heightMax/2-mouseTop;
-	var horizontaleOffset = widthMax/2-mouseLeft;
+	var mouseY = event.clientY;
+	var mouseX = event.clientX;
+	var verticaleOffset = heightMax/2-mouseY;
+	var horizontaleOffset = widthMax/2-mouseX;
 	//console.log(heightMax/widthMax,widthMax/heightMax);
+	/*
 	var amplitudeH = 0.001;
 	var amplitudeV = 0.004;
 
 	var $etherLayer = $(".area-ether__layer");
 	if($etherLayer.length>0){
-		$etherLayer.each(function(i,el){
-			var index=i;
-			var verticale = verticaleOffset*index*amplitudeV;
-			var horizontale = horizontaleOffset*index*amplitudeH;
-			$(el).css('transform','translate('+horizontale+'%,'+verticale+'%)');
-			//console.log(i,el);
-		});
-	}else{
-		console.log("no-ether-layer");
-	}
+	$etherLayer.each(function(i,el){
+	var index=i;
+	var verticale = verticaleOffset*index*amplitudeV;
+	var horizontale = horizontaleOffset*index*amplitudeH;
+	$(el).css('transform','translate('+horizontale+'%,'+verticale+'%)');
+	//console.log(i,el);
+});
+}else{
+console.log("no-ether-layer");
+}*/
 
-	var $site = $(".area-site");
-	var $corners = $(".card__reflect .card__corner");
-	if($site.length==1){
-		//console.log("rotate site");
-		var maxDegY=25;
-		var maxDegX=25;
-		var maxDegZ=25;
+var $site = $(".area-site");
+var $glass = $(".area-background__glass");
+var $reflect = $(".area-background__reflect");
+var $ref = $(".area-background__reference");
+var $corners = $(".card__reflect .card__corner");
+if($site.length==1){
+	//console.log("rotate site");
+	var maxDegY=25;
+	var maxDegX=25;
+	var maxScaleX=0.05;
+	var maxScaleY=0.05;
 
-		var degY = maxDegY/100*mouseLeft*100/width - maxDegY/2;
-		var degX = (maxDegX/100*mouseTop*100/height - maxDegX/2) *-1 ;
-		var degZ = 0;
-		var transform ='rotateX('+degX+'deg) rotateY('+degY+'deg)';
-		var transformCorner = transform+' translateZ(-32px)';
-		$site.css('transform',transform);// rotateZ('+degZ+'deg)');
-		$corners.css('transform',transformCorner);
-		//console.log($corners.length,'|',transformCorner);
-	}else{
-		console.log("no site found to be rotate");
+	var degX = (maxDegX/100*(mouseY*100/(height)) - maxDegX/2) *-1 ; //degx rotating verticaly from the horizontal axis
+	var degY = (maxDegY/100*(mouseX*100/(width)) - maxDegY/2); //degY rotating horizontaly from the vertical axis
+
+	var coefX = mouseX-width/2;
+	var coefY = mouseY-height/2;
+
+	if(coefX<0){
+		coefX *= -1;
 	}
-	//}, 16);
+	if(coefY<0){
+		coefY *= -1;
+	}
+	var scaleX = 1+(maxScaleX/100*(coefX*100/(width/2)));// angle non pris en compte et donc pas parfait
+	var scaleY = 1+(maxScaleY/100*(coefY*100/(height/2)));
+
+	//https://stackoverflow.com/questions/7565542/width-height-after-transform?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+	var scaleX2 = 1;//$ref.width()*Math.cos(degX)/$ref.width();
+	var scaleY2 = 1;//$ref.height()*Math.sin(degY)/$ref.height();
+	var x = $ref.width()*Math.cos(degX) + $ref.height()*Math.sin(degY)
+	//console.log('scaleX2:',$ref.width(),'/',$reflect.width(),"=",scaleX2);//fail jquery don't tak into consideration transform...
+	//console.log('scaleY2:',$ref.height(),'/',$reflect.height(),"=",scaleY2,x);
+
+
+
+	var transform ='rotateX('+degX+'deg) rotateY('+degY+'deg) rotateZ(0deg)';
+	var transformCorner = transform+' translateZ(-32px)';
+
+	//var transformReflect ='rotateX('+degX+'deg) rotateY(0'+(degY*-1)+'deg) rotateZ(0deg) scaleX('+scaleX+') scaleY('+scaleY+')';
+
+	var transformReflect = 'rotateX('+(degX*-1)+'deg) rotateY('+(degY)+'deg) rotateZ(0deg) scaleX('+scaleX+') scaleY('+scaleY+')';
+
+	//var transformReflect ='rotateX('+degX+'deg) rotateY(0'+(degY*-1)+'deg) rotateZ(0deg) scaleX('+scaleX2+') scaleY('+scaleY2+')';
+
+
+	$site.css('transform',transform);// rotateZ('+degZ+'deg)');
+	$glass.css('transform',transform);// rotateZ('+degZ+'deg)');
+	$reflect.css('transform',transformReflect);// rotateZ('+degZ+'deg)');
+	$corners.css('transform',transformCorner);
+	//console.log($corners.length,'|',transformCorner);
+}else{
+	console.log("no site found to be rotate");
+}
+//}, 16);
 }
 
 function logoActive(){

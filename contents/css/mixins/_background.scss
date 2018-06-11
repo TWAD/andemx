@@ -3,7 +3,7 @@
 //no Repeating Gradient Properties supported
 
 @mixin background($url){
-	background: url($url) no-repeat center;
+	background: url('../images/'+$url) no-repeat center;
 	background-size: cover;
 }
 
