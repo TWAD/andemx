@@ -1,13 +1,64 @@
 // main: ../main.scss
 
+$background-color:#081020;
+
 //$backgroud-picture:'debug.jpg';
 
-$backgroud-picture:'bg-valley.jpg';
+$background-picture:'bg-water.jpg';
 //$backgroud-picture:'bg-mountain.jpg';
 //$backgroud-picture:'bg-water.jpg';
 //$backgroud-picture:'bg-valley.jpg';
 
+$portrait:'portrait.jpg';
+
 $background-timing: all 0ms ease-out;
+
+.portrait{
+  position:absolute;
+  top:25%;
+  left:25%;
+  margin: 0 auto;
+  width:50%;
+  height:50%;
+
+  @include background($portrait);
+  background-position: center;
+  background-repeat: no-repeat;
+  //background-attachment: fixed;
+  background-size: cover;
+  box-shadow:inset 0 0 16px 8px $background-color;
+  border-radius:16px;
+  //filter:blur(8px);
+
+  /*&::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    @include background($portrait);
+    background-position: center;
+    background-repeat: no-repeat;
+    //background-attachment: fixed;
+    background-size: cover;
+    filter:blur(8px);
+  }
+  &::after{
+    content:"";
+    position:absolute;
+    width:calc(100% - 32px);
+    height:calc(100% - 32px);
+    margin:16px;
+    border-radius:8px;
+    overflow:hidden;
+    filter:brightness(0.9);
+    @include background($portrait);
+    background-position: center;
+    background-repeat: no-repeat;
+    //background-attachment: fixed;
+    background-size: cover;
+  }*/
+}
 
 .area-background{
   transition:$background-timing;
@@ -16,7 +67,7 @@ $background-timing: all 0ms ease-out;
   left:0;
   height:100%;
   width:100%;
-  @include background($backgroud-picture);
+  @include background($background-picture);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -117,7 +168,7 @@ filter:brightness(0.5) blur(5px);*/
 &__reflect{
   transition:$background-timing;
 
-  background-color:black;
+  background-color:$background-color;
   perspective: none;
   transform-origin: center;
   //transform-style:preserve-3d;
@@ -126,32 +177,34 @@ filter:brightness(0.5) blur(5px);*/
   top:0;
   left:0;
 
-  margin:-12.5%;
-  height:150%;
-  width:150%;
+  //margin:-12.5%;
+  height:100%;
+  width:100%;
 
 
   //outline:5px dashed red;
 
   //outline:2px solid blue;
 
-  filter:brightness(0.75) blur(15px);
+  //filter:brightness(0.75) blur(15px);
   &:after{
     content:'';
     position:fixed;
     left:0;
     top:0;
-    width:100%;
-    height:100%;
+
+    margin:-12.5%;
+    width:150%;
+    height:150%;
 
 
-    @include background('bg-valley.jpg');
+    @include background($background-picture);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     transform:none!important;
-    filter:brightness(0.75) blur(5px);
+    filter:brightness(0.75) blur(32px);
   }
 }
 }
